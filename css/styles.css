@@ -1,0 +1,30 @@
+body {
+    font-family: 'Arial', sans-serif;
+    font-size: larger;
+    background-color: #2805c5;
+    color: #333;
+}
+
+.navbar {
+    background-color: #5e12a5;
+    color: white;
+}
+
+.navbar a {
+    color: white !important;
+}
+
+.btn-custom {
+    background-color: #5e12a5;
+    color: white;
+    border: none;
+}
+
+.btn-custom:hover {
+    background-color: #5e12a5;
+}
+
+.card {
+    border: 1px solid #5e12a5;
+    border-radius: 10px;
+}
