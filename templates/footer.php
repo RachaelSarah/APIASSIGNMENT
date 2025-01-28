@@ -1,4 +1,4 @@
-<footer class="text-center mt-5 py-3" style="background-color:#333333; color: white;">
+<footer class="text-center mt-5 py-3" style="background-color:black; color: white;">
     <p> Luscious lips, all day, everyday.</p>
 </footer>
 

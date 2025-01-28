@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'includes/db.php';
+include('mailer.php'); // Include the mailer functionality
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -43,3 +44,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit" class="btn btn-primary">Login</button>
 </form>
 <?php include 'templates/footer.php'; ?>
+
+

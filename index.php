@@ -1,4 +1,5 @@
 <?php include 'templates/header.php'; ?>
+
 <div class="text-center">
     <h1>Welcome to Summer 21</h1>
     <p>Your destination for premium lip gloss products.</p>
@@ -7,8 +8,27 @@
 
 <div class="row mt-5">
     <div class="col-md-6">
-        <img src="images/colorful-lip-gloss-shades-arrangement.jpg" alt="Lip Gloss Collection" class="img-fluid rounded">
+        <?php 
+        // URL to an online video (replace with your own URL)
+        $videoUrl = "https://www.shutterstock.com/video/clip-3618659679-professional-lipstick-makeup-closeup-woman-applying-red";
+        
+        if ($videoUrl): ?>
+            <!-- Video snippet instead of image -->
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" 
+                        src="<?= $videoUrl ?>" 
+                        frameborder="0" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+        <?php else: ?>
+            <!-- Fallback to image if no video URL -->
+            <img src="images/colorful-lip-gloss-shades-arrangement.jpg" 
+                 alt="Lip Gloss Collection" 
+                 class="img-fluid rounded">
+        <?php endif; ?>
     </div>
+
     <div class="col-md-6">
         <h2>Why Choose Us?</h2>
         <ul>
@@ -27,7 +47,7 @@
 <div class="row mt-4">
     <?php
     require 'includes/db.php';
-    $stmt = $pdo->query("SELECT * FROM products LIMIT 3");
+    $stmt = $conn->query("SELECT * FROM products LIMIT 3");
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($products as $product): ?>
