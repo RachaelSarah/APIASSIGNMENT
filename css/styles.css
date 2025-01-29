@@ -2,17 +2,17 @@
 body {
     font-family: 'Arial', sans-serif;
     font-size: larger;
-    background-color: white;
+    background-color: rgb(217, 189, 240);
     color: black;
 }
 
 .navbar {
-    background-color: #5e12a5;
-    color: white;
+    background-color: #e8afd8;
+    color: black;
 }
 
 .navbar a {
-    color: white !important;
+    color: rgb(238, 43 , 173) !important;
 }
 
 .btn-custom {
@@ -22,41 +22,10 @@ body {
 }
 
 .btn-custom:hover {
-    background-color: #5e12a5;
+    background-color: black;
 }
 
 .card {
-    border: 1px solid #5e12a5;
+    border: 1px solid #7c7ad5;
     border-radius: 10px;
 }
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #ffe4e1;
-    color: #333;
-}
-
-.navbar {
-    background-color: #add8e6;
-    color: white;
-}
-
-.navbar a {
-    color: white !important;
-}
-
-.btn-custom {
-    background-color: #add8e6;
-    color: white;
-    border: none;
-}
-
-.btn-custom:hover {
-    background-color: #87ceeb;
-}
-
-.card {
-    border: 1px solid #add8e6;
-    border-radius: 10px;
-}
-
