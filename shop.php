@@ -1,4 +1,5 @@
 <?php
+session_start();
 require 'includes/db.php';
 
 $stmt = $conn->query("SELECT * FROM products");
