@@ -15,6 +15,31 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // Product Buy Now button interactions
+const buyNowButtons = document.querySelectorAll(".btn-custom");
+buyNowButtons.forEach((button) => {
+    button.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        console.log("Buy Now button clicked."); // Debugging
+
+        // Show a confirmation dialog
+        const confirmPurchase = confirm("Are you sure you want to buy this product?");
+        if (confirmPurchase) {
+            console.log("User confirmed purchase."); // Debugging
+
+            // Programmatically submit the form
+            const form = button.closest("form"); // Find the closest form element
+            if (form) {
+                console.log("Form found, submitting..."); // Debugging
+                form.submit(); // Submit the form
+            } else {
+                console.error("Form not found!"); // Debugging
+            }
+        } else {
+            console.log("User canceled purchase."); // Debugging
+        }
+    });
+});
 
     // Toggle password visibility in forms
     const passwordToggles = document.querySelectorAll(".toggle-password");
