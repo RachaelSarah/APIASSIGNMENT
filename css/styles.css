@@ -2,7 +2,7 @@
 body {
     font-family: 'Arial', sans-serif;
     font-size: larger;
-    background-color: rgb(217, 189, 240);
+    background-color: white;
     color: black;
 }
 
@@ -12,17 +12,17 @@ body {
 }
 
 .navbar a {
-    color: rgb(238, 43 , 173) !important;
+    color: white !important;
 }
 
 .btn-custom {
-    background-color: #5e12a5;
+    background-color: #f3a6e7;
     color: white;
     border: none;
 }
 
 .btn-custom:hover {
-    background-color: black;
+    background-color: rgb(128, 172, 199);
 }
 
 .card {
