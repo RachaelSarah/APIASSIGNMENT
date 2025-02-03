@@ -16,7 +16,10 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <h5 class="card-title"><?= $product['name'] ?></h5>
                     <p class="card-text"><?= $product['description'] ?></p>
                     <p class="card-text">$<?= $product['price'] ?></p>
-                    <a href="#" class="btn btn-custom">Buy Now</a>
+                    <form action="add_to_cart.php" method="POST">
+                        <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                        <button type="submit" class="btn btn-custom">Buy Now</button>
+                    </form>
                 </div>
             </div>
         </div>

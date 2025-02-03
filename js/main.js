@@ -15,14 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Product Buy Now button interactions
-    const buyNowButtons = document.querySelectorAll(".btn-custom");
-    buyNowButtons.forEach((button) => {
-        button.addEventListener("click", function (event) {
-            event.preventDefault();
-            alert("Thank you for your interest! This feature is coming soon.");
-        });
-    });
 
     // Toggle password visibility in forms
     const passwordToggles = document.querySelectorAll(".toggle-password");
