@@ -31,7 +31,7 @@ if (isset($_POST["recover"])) {
         $token = bin2hex(random_bytes(50));
 
         // Store the token in the database
-        $update_stmt = $connect->prepare("UPDATE userdata SET token = ? WHERE email = ?");
+        $update_stmt = $connect->prepare("UPDATE users SET token = ? WHERE email = ?");
         $update_stmt->bind_param("ss", $token, $email);
         if ($update_stmt->execute()) {
             // Send reset email
