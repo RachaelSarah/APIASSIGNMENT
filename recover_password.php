@@ -55,7 +55,7 @@ if (isset($_POST["recover"])) {
                     <b>Dear User</b>,<br><br>
                     We received a request to reset your password. Click the link below to reset your password:
                     <br><br>
-                    <a href='http://localhost/Apiproject-1/resetpswd.php?token=$token'>Reset Password</a>
+                    <a href='http://localhost/APIASSIGNMENT/resetpswd.php?token=$token'>Reset Password</a>
                     <br><br>
                     If you did not request this, please ignore this email.<br><br>
                     Regards,<br>Your Application Team
