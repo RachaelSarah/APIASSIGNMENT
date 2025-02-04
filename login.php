@@ -43,6 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
 </form>
+<p class="text-center mt-3">
+                    Don't have an account? <a href="signup.html">Sign Up</a>
+                </p>
+                <p class="text-center mt-3">
+                    Did you forget your password? <a href="recoverpswd.php">Forgot password</a>
+                </p>
 <?php include 'templates/footer.php'; ?>
 
 
