@@ -12,7 +12,7 @@ if (isset($_GET["token"])) {
     $token = $_GET["token"];
 
     // Validate the token
-    $stmt = $connect->prepare("SELECT * FROM userdata WHERE token = ?");
+    $stmt = $connect->prepare("SELECT * FROM users WHERE token = ?");
     if (!$stmt) {
         die("Database error: " . $connect->error);
     }
