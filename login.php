@@ -44,10 +44,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit" class="btn btn-primary">Login</button>
 </form>
 <p class="text-center mt-3">
-                    Don't have an account? <a href="signup.html">Sign Up</a>
+                    Don't have an account? <a href="signup.php">Sign Up</a>
                 </p>
                 <p class="text-center mt-3">
-                    Did you forget your password? <a href="recoverpswd.php">Forgot password</a>
+                    Did you forget your password? <a href="recover_password.php">Forgot password</a>
                 </p>
 <?php include 'templates/footer.php'; ?>
 
