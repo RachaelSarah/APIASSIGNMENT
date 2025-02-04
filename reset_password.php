@@ -37,7 +37,7 @@ if (isset($_GET["token"])) {
             $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
 
             // Update password and clear token
-            $update_stmt = $connect->prepare("UPDATE userdata SET password = ?, token = NULL WHERE token = ?");
+            $update_stmt = $connect->prepare("UPDATE users SET password_hash = ?, token = NULL WHERE token = ?");
             if (!$update_stmt) {
                 die("Database error: " . $connect->error);
             }
