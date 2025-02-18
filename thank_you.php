@@ -2,24 +2,121 @@
 session_start();
 include 'templates/header.php';
 
-// Assuming you have stored order details in the session
-$order_id = $_SESSION['order_id'] ?? 'N/A';
-$order_total = $_SESSION['order_total'] ?? '0.00';
+// Fetch order details from the session
+$order_id = isset($_SESSION['order_id']) ? htmlspecialchars($_SESSION['order_id']) : "N/A";
+$total_amount = isset($_SESSION['total_amount']) && is_numeric($_SESSION['total_amount']) 
+    ? number_format((float)$_SESSION['total_amount'], 2) 
+    : "N/A";
+$shipping_address = isset($_SESSION['shipping_address']) ? nl2br(htmlspecialchars($_SESSION['shipping_address'])) : "N/A";
+
+// Estimated delivery date (5–7 business days from today)
+$estimated_delivery_date = date('F j, Y', strtotime('+7 days'));
+
+// Debugging: Log order details
+error_log("Order ID: " . $order_id);
+error_log("Total Amount: " . $total_amount);
+error_log("Shipping Address: " . $shipping_address);
 ?>
 
-<div style="max-width: 600px; margin: 50px auto; padding: 20px; text-align: center; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-    <h2 style="color: #ff69b4; font-size: 2.5em; margin-bottom: 20px;">Thank You!</h2>
-    <p style="font-size: 1.2em; color: #333; margin-bottom: 20px;">Your order has been placed successfully.</p>
-    
-    <div style="background-color: #fff; padding: 15px; border-radius: 5px; margin-bottom: 20px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);">
-        <h3 style="font-size: 1.5em; margin-bottom: 10px; color: #333;">Order Details</h3>
-        <p style="font-size: 1.1em; color: #555; margin: 5px 0;"><strong>Order ID:</strong> <?php echo htmlspecialchars($order_id); ?></p>
-        <p style="font-size: 1.1em; color: #555; margin: 5px 0;"><strong>Total Amount:</strong> $<?php echo htmlspecialchars($order_total); ?></p>
+<h2>Thank You for Your Order!</h2>
+
+<?php if (isset($_SESSION['success'])): ?>
+    <div class="alert alert-success">
+        <?php 
+            echo htmlspecialchars($_SESSION['success']); 
+            unset($_SESSION['success']); // Clear success message after displaying
+        ?>
     </div>
+<?php endif; ?>
 
-    <p style="font-size: 1.2em; color: #333; margin-bottom: 20px;">We have sent a confirmation email to your registered email address. If you have any questions, feel free to <a href="contact.php" style="color: #ff69b4; text-decoration: none;">contact us</a>.</p>
-
-    <a href="index.php" style="display: inline-block; padding: 10px 20px; background-color: #ff69b4; color: #fff; text-decoration: none; border-radius: 5px; font-size: 1.1em; transition: background-color 0.3s ease;">Return to Home</a>
+<div class="card mb-4">
+    <div class="card-header">Order Summary</div>
+    <div class="card-body">
+        <p><strong>Order ID:</strong> <?= $order_id; ?></p>
+        <p><strong>Total Amount:</strong> $<?= $total_amount; ?></p>
+        <p><strong>Shipping Address:</strong> <?= $shipping_address; ?></p>
+        <p><strong>Estimated Delivery Date:</strong> <?= htmlspecialchars($estimated_delivery_date); ?></p>
+    </div>
 </div>
+
+<div class="card mb-4">
+    <div class="card-header">Customer Support</div>
+    <div class="card-body">
+        <p>If you have any questions or need assistance, please contact our customer support team:</p>
+        <ul>
+            <li>Email: <a href="mailto:summer21cosmetics@gmail.com">summer21@gmail.com</a></li>
+            <li>Phone: <a href="tel:+254777854600">+254 (777) 854-600</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">Share Your Purchase</div>
+    <div class="card-body">
+        <p>Let your friends know about your awesome purchase!</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=<?= urlencode("https://example.com/thank_you.php") ?>" target="_blank" class="btn btn-primary">
+                <i class="fab fa-facebook"></i> Share on Facebook
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=<?= urlencode("https://example.com/thank_you.php") ?>&text=I%20just%20made%20an%20awesome%20purchase!" target="_blank" class="btn btn-info">
+                <i class="fab fa-twitter"></i> Tweet About It
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">You Might Also Like</div>
+    <div class="card-body">
+        <div class="row">
+            <!-- Example product cards -->
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 1</h5>
+                        <p class="card-text">$49.99</p>
+                        <a href="product.php?id=1" class="btn btn-primary">View Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 2</h5>
+                        <p class="card-text">$29.99</p>
+                        <a href="product.php?id=2" class="btn btn-primary">View Product</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Product 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Product 3</h5>
+                        <p class="card-text">$39.99</p>
+                        <a href="product.php?id=3" class="btn btn-primary">View Product</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">Leave Feedback</div>
+    <div class="card-body">
+        <form action="submit_feedback.php" method="POST">
+            <div class="mb-3">
+                <label for="feedback" class="form-label">How was your shopping experience?</label>
+                <textarea class="form-control" id="feedback" name="feedback" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Feedback</button>
+        </form>
+    </div>
+</div>
+
+<p><a href="index.php" class="btn btn-secondary">Return to Home</a></p>
 
 <?php include 'templates/footer.php'; ?>

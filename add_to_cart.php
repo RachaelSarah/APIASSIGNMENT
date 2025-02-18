@@ -1,37 +1,38 @@
 <?php
 session_start();
-require 'includes/db.php';
-require 'includes/auth.php';
 
-if (!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = [];
-}
-
+// Ensure the request is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $product_id = $_POST['product_id'];
+    // Check if required POST parameters exist
+    if (isset($_POST['product_id'], $_POST['name'], $_POST['price'])) {
+        $productId = $_POST['product_id'];
+        $productName = $_POST['name'];
+        $productPrice = $_POST['price'];
 
-    // Check if the product is already in the cart
-    if (isset($_SESSION['cart'][$product_id])) {
-        $_SESSION['cart'][$product_id]['quantity'] += 1;
-    } else {
-        // Add the product to the cart
-        require 'includes/db.php';
-        $stmt = $conn->prepare("SELECT * FROM products WHERE id = :id");
-        $stmt->execute(['id' => $product_id]);
-        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Initialize the cart if it doesn't exist
+        if (!isset($_SESSION['cart'])) {
+            $_SESSION['cart'] = [];
+        }
 
-        if ($product) {
-            $_SESSION['cart'][$product_id] = [
-                'id' => $product['id'],
-                'name' => $product['name'],
-                'price' => $product['price'],
-                'quantity' => 1,
-                'image_url' => $product['image_url']
+        // Check if the product is already in the cart
+        if (isset($_SESSION['cart'][$productId])) {
+            $_SESSION['cart'][$productId]['quantity'] += 1; // Increment quantity
+        } else {
+            // Add new product to the cart
+            $_SESSION['cart'][$productId] = [
+                'name' => $productName,
+                'price' => $productPrice,
+                'quantity' => 1
             ];
         }
+
+        // Redirect to cart.php after adding the product
+        header("Location: cart.php?success=1");
+        exit();
+    } else {
+        // Handle missing data error
+        header("Location: shop.php?error=missing_data");
+        exit();
     }
 }
-
-header('Location: cart.php');
-exit;
 ?>
