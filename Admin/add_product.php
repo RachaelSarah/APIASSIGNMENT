@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = trim($_POST['description']);
     $price = trim($_POST['price']);
     $image_url = trim($_POST['image_url']);
-    $category = trim($_POST['category']); // Get category
+    $category = trim($_POST['category']);
 
     if (empty($name) || empty($price) || empty($category)) {
         $error = "Name, price, and category are required.";
@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ':description' => $description,
                 ':price' => $price,
                 ':image_url' => $image_url,
-                ':category' => $category // Add category
+                ':category' => $category
             ]);
             header("Location: admin_dashboard.php");
             exit();
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div>
             <label for="category">Category:</label>
-            <input type="text" id="category" name="category" required> <!-- Add category field -->
+            <input type="text" id="category" name="category" required>
         </div>
         <button type="submit">Add Product</button>
     </form>

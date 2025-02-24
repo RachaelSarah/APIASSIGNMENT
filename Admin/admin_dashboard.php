@@ -67,13 +67,13 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
             <?php foreach ($products as $product): ?>
                 <tr>
-                    <td><?= htmlspecialchars($product['id']); ?></td>
+                    <td><?= htmlspecialchars($product['product_id']); ?></td> <!-- Updated to product_id -->
                     <td><?= htmlspecialchars($product['name']); ?></td>
-                    <td><?= htmlspecialchars($product['category']); ?></td> <!-- Display category -->
+                    <td><?= htmlspecialchars($product['category']); ?></td>
                     <td>$<?= number_format((float)$product['price'], 2); ?></td>
                     <td>
-                        <a href="edit_product.php?id=<?= $product['id']; ?>" class="btn">Edit</a>
-                        <a href="delete_product.php?id=<?= $product['id']; ?>" class="btn" onclick="return confirm('Are you sure?')" style="background-color: #dc3545;">Delete</a>
+                        <a href="edit_product.php?product_id=<?= $product['product_id']; ?>" class="btn">Edit</a> <!-- Updated to product_id -->
+                        <a href="delete_product.php?product_id=<?= $product['product_id']; ?>" class="btn" onclick="return confirm('Are you sure?')" style="background-color: #dc3545;">Delete</a> <!-- Updated to product_id -->
                     </td>
                 </tr>
             <?php endforeach; ?>
