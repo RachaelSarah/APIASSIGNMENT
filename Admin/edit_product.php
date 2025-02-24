@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_logged_in']) || !$_SESSION['admin_logged_in']) {
     exit();
 }
 
-$product_id = isset($_GET['id']) ? intval($_GET['id']) : null;
+$product_id = isset($_GET['product_id']) ? intval($_GET['product_id']) : null; // Updated to product_id
 
 if (!$product_id) {
     header("Location: admin_dashboard.php");
@@ -16,8 +16,8 @@ if (!$product_id) {
 }
 
 // Fetch product details
-$stmt = $conn->prepare("SELECT * FROM products WHERE id = :id");
-$stmt->execute([':id' => $product_id]);
+$stmt = $conn->prepare("SELECT * FROM products WHERE product_id = :product_id"); // Updated to product_id
+$stmt->execute([':product_id' => $product_id]);
 $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (!$product) {
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = trim($_POST['description']);
     $price = trim($_POST['price']);
     $image_url = trim($_POST['image_url']);
-    $category = trim($_POST['category']); // Get category
+    $category = trim($_POST['category']);
 
     if (empty($name) || empty($price) || empty($category)) {
         $error = "Name, price, and category are required.";
@@ -39,15 +39,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $conn->prepare("
                 UPDATE products 
                 SET name = :name, description = :description, price = :price, image_url = :image_url, category = :category 
-                WHERE id = :id
-            ");
+                WHERE product_id = :product_id
+            "); // Updated to product_id
             $stmt->execute([
                 ':name' => $name,
                 ':description' => $description,
                 ':price' => $price,
                 ':image_url' => $image_url,
-                ':category' => $category, // Update category
-                ':id' => $product_id
+                ':category' => $category,
+                ':product_id' => $product_id // Updated to product_id
             ]);
             header("Location: admin_dashboard.php");
             exit();
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (isset($error)): ?>
         <div style="color: red;"><?= htmlspecialchars($error); ?></div>
     <?php endif; ?>
-    <form action="edit_product.php?id=<?= $product['id']; ?>" method="POST">
+    <form action="edit_product.php?product_id=<?= $product['product_id']; ?>" method="POST"> <!-- Updated to product_id -->
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value="<?= htmlspecialchars($product['name']); ?>" required>
@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div>
             <label for="category">Category:</label>
-            <input type="text" id="category" name="category" value="<?= htmlspecialchars($product['category']); ?>" required> <!-- Add category field -->
+            <input type="text" id="category" name="category" value="<?= htmlspecialchars($product['category']); ?>" required>
         </div>
         <button type="submit">Update Product</button>
     </form>

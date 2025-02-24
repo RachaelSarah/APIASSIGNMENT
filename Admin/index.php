@@ -1,7 +1,7 @@
 <?php
 include('dbconnection.php'); // Establish PDO connection as $conn
 
-// Fetch all products
+// Fetch all products from the database
 $stmt = $conn->query("SELECT * FROM products");
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -20,6 +20,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="product">
                 <img src="<?= htmlspecialchars($product['image_url']); ?>" alt="<?= htmlspecialchars($product['name']); ?>" width="150">
                 <h3><?= htmlspecialchars($product['name']); ?></h3>
+                <p><strong>Category:</strong> <?= htmlspecialchars($product['category']); ?></p> <!-- Display category -->
                 <p><?= htmlspecialchars($product['description']); ?></p>
                 <p><strong>Price:</strong> $<?= number_format((float)$product['price'], 2); ?></p>
             </div>

@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_logged_in']) || !$_SESSION['admin_logged_in']) {
     exit();
 }
 
-$product_id = isset($_GET['id']) ? intval($_GET['id']) : null;
+$product_id = isset($_GET['product_id']) ? intval($_GET['product_id']) : null; // Updated to product_id
 
 if (!$product_id) {
     header("Location: admin_dashboard.php");
@@ -16,8 +16,8 @@ if (!$product_id) {
 }
 
 try {
-    $stmt = $conn->prepare("DELETE FROM products WHERE id = :id");
-    $stmt->execute([':id' => $product_id]);
+    $stmt = $conn->prepare("DELETE FROM products WHERE product_id = :product_id"); // Updated to product_id
+    $stmt->execute([':product_id' => $product_id]);
     header("Location: admin_dashboard.php");
     exit();
 } catch (Exception $e) {
