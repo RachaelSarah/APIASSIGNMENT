@@ -59,6 +59,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th>Actions</th>
             </tr>
@@ -68,6 +69,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <tr>
                     <td><?= htmlspecialchars($product['id']); ?></td>
                     <td><?= htmlspecialchars($product['name']); ?></td>
+                    <td><?= htmlspecialchars($product['category']); ?></td> <!-- Display category -->
                     <td>$<?= number_format((float)$product['price'], 2); ?></td>
                     <td>
                         <a href="edit_product.php?id=<?= $product['id']; ?>" class="btn">Edit</a>
