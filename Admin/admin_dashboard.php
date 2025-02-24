@@ -19,65 +19,94 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        .btn {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #ff69b4;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .btn:hover {
-            background-color: #e75480;
-        }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 </head>
-<body>
-    <h2>Admin Dashboard</h2>
-    <a href="add_product.php" class="btn">Add New Product</a>
-    <a href="logout.php" class="btn" style="background-color: #dc3545;">Logout</a>
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 20px;">
+    <!-- Header Section -->
+    <header style="background-color: #ff69b4; color: white; text-align: center; padding: 20px; border-radius: 10px 10px 0 0;">
+        <img src="https://via.placeholder.com/150" alt="Lip Gloss Logo" style="max-width: 100px; height: auto; display: block; margin: 0 auto 10px;">
+        <h1 style="margin: 0;">Admin Dashboard</h1>
+        <p style="margin: 5px 0;">Manage Your Lip Gloss Products</p>
+    </header>
 
-    <h3>Products</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($products as $product): ?>
+    <!-- Main Content -->
+    <div style="background-color: white; padding: 20px; border-radius: 0 0 10px 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); max-width: 1000px; margin: 0 auto;">
+        <!-- Action Buttons -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <a href="add_product.php" class="btn" style="background-color: #ff69b4; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; text-decoration: none;">
+                Add New Product <i class="fas fa-plus"></i>
+            </a>
+            <a href="logout.php" class="btn" style="background-color: #dc3545; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; text-decoration: none;">
+                Logout <i class="fas fa-sign-out-alt"></i>
+            </a>
+        </div>
+
+        <!-- Search Input -->
+        <div style="margin-bottom: 20px;">
+            <input type="text" id="search-input" placeholder="Search products..." style="padding: 10px; width: 100%; border: 1px solid #ddd; border-radius: 5px; font-size: 16px;">
+        </div>
+
+        <!-- Products Table -->
+        <h2 style="color: #ff69b4; margin-bottom: 20px; text-align: center;">Products</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+            <thead style="background-color: #ff69b4; color: white;">
                 <tr>
-                    <td><?= htmlspecialchars($product['product_id']); ?></td> <!-- Updated to product_id -->
-                    <td><?= htmlspecialchars($product['name']); ?></td>
-                    <td><?= htmlspecialchars($product['category']); ?></td>
-                    <td>$<?= number_format((float)$product['price'], 2); ?></td>
-                    <td>
-                        <a href="edit_product.php?product_id=<?= $product['product_id']; ?>" class="btn">Edit</a> <!-- Updated to product_id -->
-                        <a href="delete_product.php?product_id=<?= $product['product_id']; ?>" class="btn" onclick="return confirm('Are you sure?')" style="background-color: #dc3545;">Delete</a> <!-- Updated to product_id -->
-                    </td>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">ID</th>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Name</th>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Category</th>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Price</th>
+                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Actions</th>
                 </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <?php if (empty($products)): ?>
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 20px; border: 1px solid #ddd;">
+                            No products found.
+                        </td>
+                    </tr>
+                <?php else: ?>
+                    <?php foreach ($products as $product): ?>
+                        <tr style="border: 1px solid #ddd; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#f4f4f4'" onmouseout="this.style.backgroundColor='white'">
+                            <td style="padding: 10px; border: 1px solid #ddd;"><?= htmlspecialchars($product['product_id']); ?></td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><?= htmlspecialchars($product['name']); ?></td>
+                            <td style="padding: 10px; border: 1px solid #ddd;"><?= htmlspecialchars($product['category']); ?></td>
+                            <td style="padding: 10px; border: 1px solid #ddd;">$<?= number_format((float)$product['price'], 2); ?></td>
+                            <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">
+                                <a href="edit_product.php?product_id=<?= $product['product_id']; ?>" class="btn" style="background-color: #198754; color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: 14px; margin-right: 5px; text-decoration: none;">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <a href="delete_product.php?product_id=<?= $product['product_id']; ?>" class="btn" onclick="return confirm('Are you sure?')" style="background-color: #dc3545; color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: 14px; text-decoration: none;">
+                                    <i class="fas fa-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
+        <!-- Footer -->
+        <footer style="text-align: center; color: #666; font-size: 14px; margin-top: 20px;">
+            © 2023 Lip Gloss Admin Panel
+        </footer>
+    </div>
+
+    <!-- Search Script -->
+    <script>
+        document.getElementById('search-input').addEventListener('input', function () {
+            const query = this.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const name = row.cells[1].textContent.toLowerCase();
+                const category = row.cells[2].textContent.toLowerCase();
+                if (name.includes(query) || category.includes(query)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
