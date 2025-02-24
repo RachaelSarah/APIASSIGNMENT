@@ -1,0 +1,115 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center;
+    color: #b78ad6; /* Pinkish color for headings */
+    margin-top: 20px;
+}
+
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+
+.card-header {
+    background-color: #b78ad6; /* Pink header background */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.social-links .btn {
+    background-color: #ff69b4 !important; /* Pink buttons */
+    border-color: #ff69b4 !important;
+    color: white !important;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links .btn:hover {
+    background-color: #e75480 !important; /* Darker pink on hover */
+    transform: scale(1.05);
+}
+
+.btn-primary {
+    background-color: #ff69b4 !important; /* Pink primary buttons */
+    border-color: #ff69b4 !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: #e75480 !important; /* Darker pink on hover */
+}
+
+a {
+    color: #ff69b4; /* Pink links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Feedback Form */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+textarea {
+    width: 100%;
+    resize: vertical;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Product Cards */
+.card-img-top {
+    height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #666;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #ff69b4;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

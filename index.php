@@ -81,7 +81,7 @@
         <p>Infused with natural butters and essential oils, our lip masks provide intense hydration for a perfect pout.</p>
     </div>
     <div class="col-md-6">
-        <img src="images/lip-mask.jpg" alt="Lip Mask" class="img-fluid rounded">
+        <img src="https://m.media-amazon.com/images/I/61zu2FHiygL._SL1000_.jpg" alt="Lip Mask" class="img-fluid rounded">
     </div>
 </div>
 
