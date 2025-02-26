@@ -119,7 +119,7 @@ if (isset($_SESSION['failed_attempts']) && $_SESSION['failed_attempts'] >= 3) {
 </head>
 <body>
     <div class="login-container">
-        <img src="" alt="Summer 21" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+        <!-- Removed the logo image -->
         <h2>Admin Login</h2>
         <?php if (isset($error)): ?>
             <div class="error"><?= htmlspecialchars($error); ?></div>

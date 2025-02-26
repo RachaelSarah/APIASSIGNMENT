@@ -1,7 +1,5 @@
 <?php
 session_start();
-session_unset();
-session_destroy();
-header('Location: login.php');
-exit;
-?>
+unset($_SESSION['admin_logged_in']);
+header("Location: admin_login.php");
+exit();

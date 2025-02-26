@@ -49,7 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
     <div style="background-color: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: center; width: 100%; max-width: 500px;">
-        <img src="https://via.placeholder.com/150" alt="Lip Gloss Logo" style="max-width: 100%; height: auto; margin-bottom: 20px;">
+        <!-- Removed the logo image -->
+        
         <h2 style="color: #ff69b4; margin-bottom: 20px;">Add New Product</h2>
         <?php if (isset($error)): ?>
             <div style="color: red; background-color: #ffecec; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
@@ -85,7 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p style="margin-top: 15px; font-size: 14px; color: #666; text-align: center;">
             <a href="admin_dashboard.php" style="text-decoration: none; color: #ff69b4;">Back to Dashboard</a>
         </p>
-
         <script>
             // Image preview functionality
             document.getElementById('image_url').addEventListener('input', function () {
