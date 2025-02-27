@@ -137,6 +137,10 @@ try {
         <p>
             Did you forget your password? <a href="recover_password.php" style="color: #007bff; text-decoration: none;">Forgot password</a>
         </p>
+        <p>
+    Are you an admin? <a href="admin_login.php" style="color: #007bff; text-decoration: none;">Admin Login</a>
+</p>
+
     </div>
 </div>
 
