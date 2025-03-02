@@ -17,7 +17,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <style>
     body {
-        background-color: #f8f9fa;
+        background-color: #d8f3fc; /* Light blue background */
     }
     .search-container {
         max-width: 500px;
@@ -35,6 +35,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease-in-out;
+        background: #ffffff; /* White background for contrast */
     }
     .card:hover {
         transform: scale(1.05);
