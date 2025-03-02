@@ -96,5 +96,4 @@
         <img src="https://m.media-amazon.com/images/I/61zu2FHiygL._SL1000_.jpg" alt="Lip Mask" class="img-fluid rounded" style="max-width: 100%; max-height: 300px; object-fit: cover; border: 2px solid #ff69b4; border-radius: 10px;">
     </div>
 </div>
-
 <?php include 'templates/footer.php'; ?>
