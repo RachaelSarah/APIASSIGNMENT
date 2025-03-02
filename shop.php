@@ -26,7 +26,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     h2 {
         text-align: center;
         margin: 20px 0;
-        color: #007bff;
+        color: #e83e8c; /* Pink heading for a stylish look */
     }
     .card {
         width: 100%; 
@@ -49,7 +49,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         text-align: center;
     }
     .btn-custom {
-        background-color: #007bff;
+        background-color: #e83e8c; /* Pink button */
         color: white;
         border: none;
         padding: 8px 15px;
@@ -57,7 +57,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         transition: background 0.3s;
     }
     .btn-custom:hover {
-        background-color: #0056b3;
+        background-color: #c2185b; /* Darker pink on hover */
     }
 </style>
 
