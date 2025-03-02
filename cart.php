@@ -52,12 +52,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         text-align: center;
         font-weight: bold;
     }
-    .btn-custom {
-        background-color: #ff66b2; /* Pink buttons */
+    .btn-remove {
+        background-color: #007bff; /* Blue remove button */
         color: white;
         border: none;
     }
-    .btn-custom:hover {
+    .btn-remove:hover {
+        background-color: #0056b3;
+    }
+    .btn-empty {
+        background-color: #007bff; /* Blue empty cart button */
+        color: white;
+        border: none;
+    }
+    .btn-empty:hover {
+        background-color: #0056b3;
+    }
+    .btn-continue {
+        background-color: #28a745; /* Green continue shopping button */
+        color: white;
+    }
+    .btn-continue:hover {
+        background-color: #218838;
+    }
+    .btn-checkout {
+        background-color: #ff66b2; /* Pink checkout button */
+        color: white;
+        border: none;
+    }
+    .btn-checkout:hover {
         background-color: #e65c99;
     }
     .empty-cart {
@@ -112,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td>
                             <form action="cart.php" method="POST" style="display:inline;">
                                 <input type="hidden" name="remove_product_id" value="<?= $productId ?>">
-                                <button type="submit" class="btn btn-danger btn-sm">❌ Remove</button>
+                                <button type="submit" class="btn btn-remove btn-sm">❌ Remove</button>
                             </form>
                         </td>
                     </tr>
@@ -130,10 +153,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Action Buttons -->
         <div class="d-flex justify-content-between mt-4">
             <form action="cart.php" method="POST">
-                <button type="submit" name="empty_cart" class="btn btn-warning">🗑 Empty Cart</button>
+                <button type="submit" name="empty_cart" class="btn btn-empty">🗑 Empty Cart</button>
             </form>
-            <a href="shop.php" class="btn btn-secondary">🔙 Continue Shopping</a>
-            <a href="checkout.php" class="btn btn-custom">💳 Proceed to Checkout</a>
+            <a href="shop.php" class="btn btn-continue">🔙 Continue Shopping</a>
+            <a href="checkout.php" class="btn btn-checkout">💳 Proceed to Checkout</a>
         </div>
 
     <?php else: ?>
@@ -141,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="empty-cart">
             <h3>Your cart is empty 😢</h3>
             <p>Start adding some products now!</p>
-            <a href="shop.php" class="btn btn-custom">🛍 Start Shopping</a>
+            <a href="shop.php" class="btn btn-continue">🛍 Start Shopping</a>
         </div>
     <?php endif; ?>
 </div>
