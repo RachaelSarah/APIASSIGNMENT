@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'templates/header.php';
 // Fetch order details from the session
 $order_id = isset($_SESSION['order_id']) ? htmlspecialchars($_SESSION['order_id']) : "N/A";
 $total_amount = isset($_SESSION['total_amount']) && is_numeric($_SESSION['total_amount']) 
