@@ -2,7 +2,7 @@
 session_start();
 include('dbconnection.php'); // Establish PDO connection as $conn
 
-// Ensure admin is logged in
+// Ensure admin is logged in.
 if (!isset($_SESSION['admin_logged_in']) || !$_SESSION['admin_logged_in']) {
     header("Location: admin_login.php");
     exit();
