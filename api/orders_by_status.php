@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+//include databasse connection
 include '../includes/db.php';
 
 $stmt = $conn->query("
