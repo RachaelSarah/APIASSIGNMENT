@@ -9,7 +9,7 @@ try {
     $min_price = htmlspecialchars(trim($_GET['min_price'] ?? ''));
     $max_price = htmlspecialchars(trim($_GET['max_price'] ?? ''));
 
-    // Build SQL query dynamically
+    // Build SQL query dynamically.
     $sql = "SELECT * FROM products WHERE 1=1";
     $params = [];
 
