@@ -5,7 +5,6 @@ include('dbconnection.php'); // Establish PDO connection as $conn
 $stmt = $conn->query("SELECT * FROM products");
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +13,7 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Lip Gloss Products</title>
 </head>
 <body>
-    <h2>Our Lip Gloss Products</h2>
+    <h2>Our Lip Gloss Products.</h2>
     <div class="products">
         <?php foreach ($products as $product): ?>
             <div class="product">
