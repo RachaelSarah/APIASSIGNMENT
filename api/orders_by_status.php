@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 //include databasse connection
 include '../includes/db.php';
-
+//Execute SQL Query To Get Count of orders
 $stmt = $conn->query("
     SELECT 
         payment_status AS status,
