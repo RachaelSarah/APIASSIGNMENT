@@ -16,7 +16,7 @@ $user_id = $_SESSION['user_id'];
 $sql = "INSERT INTO orders (user_id, order_total) VALUES (?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("id", $user_id, $order_total);
-
+//starter
 if ($stmt->execute()) {
     // Get the last inserted order ID
     $order_id = $stmt->insert_id;
