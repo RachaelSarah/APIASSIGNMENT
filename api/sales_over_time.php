@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+//Include database connection
 include '../includes/db.php';
 
 $stmt = $conn->query("
