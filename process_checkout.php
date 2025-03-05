@@ -10,7 +10,7 @@ if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Validate the address input
+    // Validate the address input.
     if (empty($_POST['address'])) {
         $_SESSION['error'] = "Shipping address is required.";
         header("Location: cart.php");
