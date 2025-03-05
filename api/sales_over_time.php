@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 //Include database connection
 include '../includes/db.php';
-
+//Execute SQL Query to retrieve total sales per month
 $stmt = $conn->query("
     SELECT 
         DATE_FORMAT(created_at, '%Y-%m') AS month,
