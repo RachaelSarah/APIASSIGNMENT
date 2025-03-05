@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 require 'includes/dbb.php';
 
@@ -24,53 +24,112 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <?php include 'templates/header.php'; ?>
 
-<div style="max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background-color: #f9f9f9; box-shadow: 2px 2px 12px rgba(0,0,0,0.1);">
-    <h2 style="text-align: center; color: #333;">Contact Us</h2>
+<!-- Custom Styling -->
+<style>
+    body {
+        background-color: #FCE4EC; /* Pastel Pink */
+        font-family: 'Arial', sans-serif;
+    }
+    .contact-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+        color: #d63384; /* Soft Pink */
+        font-weight: bold;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        font-weight: bold;
+        color: #444;
+    }
+    input, textarea, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    textarea {
+        resize: vertical;
+    }
+    .btn-submit {
+        width: 100%;
+        padding: 12px;
+        background-color: #ff66b2; /* Soft pink button */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s ease-in-out;
+    }
+    .btn-submit:hover {
+        background-color: #e65c99; /* Darker pink on hover */
+    }
+    .alert {
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    .alert-danger {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+</style>
+
+<div class="contact-container">
+    <h2>📩 Contact Us</h2>
     
+    <!-- Display Success or Error Messages -->
     <?php if (isset($successMessage)): ?>
-        <div style="padding: 10px; background-color: #d4edda; color: #FFDFDD; border-radius: 5px; margin-bottom: 15px;">
-            <?= $successMessage ?>
-        </div>
+        <div class="alert alert-success"><?= $successMessage ?></div>
     <?php elseif (isset($errorMessage)): ?>
-        <div style="padding: 10px; background-color: #f8d7da; color: #721c24; border-radius: 5px; margin-bottom: 15px;">
-            <?= $errorMessage ?>
-        </div>
+        <div class="alert alert-danger"><?= $errorMessage ?></div>
     <?php endif; ?>
 
     <form action="contact.php" method="POST">
-        <div style="margin-bottom: 15px;">
-            <label for="name" style="font-weight: bold;">Name:</label>
-            <input type="text" name="name" id="name" required 
-                style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px;">
+        <div class="form-group">
+            <label for="name">Your Name:</label>
+            <input type="text" name="name" id="name" required>
         </div>
 
-        <div style="margin-bottom: 15px;">
-            <label for="email" style="font-weight: bold;">Email:</label>
-            <input type="email" name="email" id="email" required 
-                style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px;">
+        <div class="form-group">
+            <label for="email">Your Email:</label>
+            <input type="email" name="email" id="email" required>
         </div>
 
-        <div style="margin-bottom: 15px;">
-            <label for="message" style="font-weight: bold;">Message:</label>
-            <textarea name="message" id="message" rows="4" required 
-                style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+        <div class="form-group">
+            <label for="message">Your Message:</label>
+            <textarea name="message" id="message" rows="4" required></textarea>
         </div>
 
-        <div style="margin-bottom: 15px;">
-            <label for="feedback" style="font-weight: bold;">Feedback:</label>
-            <select name="feedback" id="feedback" required 
-                style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px;">
-                <option value="" disabled selected>Select your opinion</option>
-                <option value="excellent">Excellent - I love it!</option>
-                <option value="good">Good - Satisfied with the product</option>
-                <option value="average">Average - Could be better</option>
-                <option value="poor">Poor - Not happy with it</option>
+        <div class="form-group">
+            <label for="feedback">How was your experience?</label>
+            <select name="feedback" id="feedback" required>
+                <option value="" disabled selected>Select your feedback</option>
+                <option value="excellent">🌟 Excellent - I love it!</option>
+                <option value="good">😊 Good - Satisfied</option>
+                <option value="average">😐 Average - Could be better</option>
+                <option value="poor">😞 Poor - Not happy</option>
             </select>
         </div>
 
-        <button type="submit" style="width: 100%; padding: 12px; background-color: #e8afd8; color: Black; border: none; border-radius: 5px; cursor: pointer;">
-            Send Message
-        </button>
+        <button type="submit" class="btn-submit">💌 Send Message</button>
     </form>
 </div>
 
