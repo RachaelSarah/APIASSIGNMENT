@@ -18,7 +18,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("id", $user_id, $order_total);
 //starter
 if ($stmt->execute()) {
-    // Get the last inserted order ID
+    // Get the last inserted order ID.
     $order_id = $stmt->insert_id;
     $_SESSION['order_id'] = $order_id;
     $_SESSION['order_total'] = $order_total;
