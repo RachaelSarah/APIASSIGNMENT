@@ -6,7 +6,7 @@ $total_amount = isset($_SESSION['total_amount']) && is_numeric($_SESSION['total_
     ? number_format((float)$_SESSION['total_amount'], 2) 
     : "N/A";
 $shipping_address = isset($_SESSION['shipping_address']) ? nl2br(htmlspecialchars($_SESSION['shipping_address'])) : "N/A";
-// Estimated delivery date (5–7 business days from today)
+// Estimated delivery date (5–7 business days from today.)
 $estimated_delivery_date = date('F j, Y', strtotime('+7 days'));
 // Debugging: Log order details
 error_log("Order ID: " . $order_id);
