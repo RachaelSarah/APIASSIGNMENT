@@ -2,7 +2,7 @@
 session_start();
 include('dbconnection.php'); // Establish PDO connection as $conn
 
-// Debugging: Check if cart is set
+// Debugging: Check if cart is set.
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     $_SESSION['error'] = "Your cart is empty.";
     header("Location: cart.php");
