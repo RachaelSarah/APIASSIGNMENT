@@ -1,4 +1,5 @@
 <?php
+//starting session
 session_start();
 require 'includes/db.php';
 
