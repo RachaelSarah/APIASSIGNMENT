@@ -3,7 +3,7 @@ include('dbconnection.php'); // Database connection
 session_start(); // Start session for cart management
 
 try {
-    // Capture search and filter inputs
+    // Capture search and filter inputs.
     $query = htmlspecialchars(trim($_GET['query'] ?? ''));
     $category = htmlspecialchars(trim($_GET['category'] ?? ''));
     $min_price = htmlspecialchars(trim($_GET['min_price'] ?? ''));
