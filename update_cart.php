@@ -3,7 +3,7 @@
 session_start();
 //Establish database connection
 require 'includes/db.php';
-
+//Cgeck if request is POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $product_id = $_POST['product_id'];
     $quantity = $_POST['quantity'];
