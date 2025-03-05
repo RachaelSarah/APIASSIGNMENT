@@ -12,7 +12,7 @@ if (isset($_GET['delete'])) {
     exit;
 }
 
-// Fetch all products
+// Fetch all products.
 $stmt = $pdo->query("SELECT * FROM products");
 $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
