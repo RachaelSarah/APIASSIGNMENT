@@ -1,4 +1,4 @@
-<?php 
+<?php
 require 'includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -26,113 +26,101 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include 'templates/header.php'; ?>
 
-<!-- Custom Styling -->
-<style>
-    body {
-        background-color: #FCE4EC; /* Pastel Pink */
-        font-family: 'Arial', sans-serif;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+<!-- Background Video -->
+<div style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+">
+    <iframe style="
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
         height: 100vh;
-        margin: 0;
-    }
-    .signup-container {
-        background: white;
+        pointer-events: none;
+    " src="" frameborder="0" allowfullscreen>
+    </iframe>
+</div>
+
+<!-- Signup Form -->
+<div style="
+    position: relative;
+    z-index: 1;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+">
+    <div style="
+        background: rgba(255, 255, 255, 0.9);
         padding: 30px;
-        border-radius: 12px;
-        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
         width: 100%;
         max-width: 400px;
         text-align: center;
-    }
-    h2 {
-        color: #d63384; /* Soft Pink */
-        font-weight: bold;
-    }
-    .form-group {
-        margin-bottom: 15px;
-        text-align: left;
-    }
-    label {
-        font-weight: bold;
-        color: #444;
-    }
-    input {
-        width: 100%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-    .btn-submit {
-        width: 100%;
-        padding: 12px;
-        background-color: #ff66b2; /* Soft pink button */
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background 0.3s ease-in-out;
-    }
-    .btn-submit:hover {
-        background-color: #e65c99; /* Darker pink on hover */
-    }
-    .alert {
-        padding: 10px;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: bold;
-        margin-bottom: 15px;
-    }
-    .alert-danger {
-        background-color: #f8d7da;
-        color: #721c24;
-    }
-    .login-link {
-        margin-top: 15px;
-        color: #d63384;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .login-link:hover {
-        text-decoration: underline;
-    }
-</style>
+    ">
+        <h2 style="margin-bottom: 20px; color: #333;">Sign Up</h2>
+        <?php if (isset($error)) echo "<div style='color: red; margin-bottom: 15px;'>$error</div>"; ?>
 
-<!-- Signup Form -->
-<div class="signup-container">
-    <h2>✨ Sign Up ✨</h2>
+        <form action="signup.php" method="POST">
+            <div style="margin-bottom: 15px; text-align: left;">
+                <label for="username" style="font-weight: bold;">Username</label>
+                <input type="text" id="username" name="username" required style="
+                    width: 100%;
+                    padding: 10px;
+                    margin-top: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    box-sizing: border-box;
+                ">
+            </div>
+            <div style="margin-bottom: 15px; text-align: left;">
+                <label for="email" style="font-weight: bold;">Email</label>
+                <input type="email" id="email" name="email" required style="
+                    width: 100%;
+                    padding: 10px;
+                    margin-top: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    box-sizing: border-box;
+                ">
+            </div>
+            <div style="margin-bottom: 15px; text-align: left;">
+                <label for="password" style="font-weight: bold;">Password</label>
+                <input type="password" id="password" name="password" required style="
+                    width: 100%;
+                    padding: 10px;
+                    margin-top: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    box-sizing: border-box;
+                ">
+            </div>
+            <button type="submit" style="
+                background-color: #007bff;
+                color: white;
+                border: none;
+                padding: 10px 15px;
+                width: 100%;
+                font-size: 16px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s;
+            " onmouseover="this.style.backgroundColor='#0056b3'" onmouseout="this.style.backgroundColor='#007bff'">
+                Sign Up
+            </button>
+        </form>
 
-    <!-- Display error message if exists -->
-    <?php if (isset($error)): ?>
-        <div class="alert alert-danger"><?= $error ?></div>
-    <?php endif; ?>
-
-    <form action="signup.php" method="POST">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-
-        <button type="submit" class="btn-submit">💖 Create Account</button>
-    </form>
-
-    <p class="login-link">
-        Already have an account? <a href="login.php">Login</a>
-    </p>
+        <p style="margin-top: 15px;">
+            Already have an account? <a href="login.php" style="color: #007bff; text-decoration: none;">Login</a>
+        </p>
+    </div>
 </div>
 
 <?php include 'templates/footer.php'; ?>
