@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 if (isset($_POST["recover"])) {
     $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
 
-    // Validate email format
+    // Validate email format.
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('Invalid email format');</script>";
         exit();
